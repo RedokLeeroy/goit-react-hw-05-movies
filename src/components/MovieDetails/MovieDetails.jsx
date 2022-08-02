@@ -20,13 +20,7 @@ export const MovieDetails = () => {
         <div>
           <button
             type="button"
-            onClick={() =>
-              navigate(
-                `${
-                  location?.state?.from.pathname + location?.state?.from.search
-                }` ?? "/"
-              )
-            }
+            onClick={() => navigate(location?.state?.from ?? "/")}
           >
             Go Back
           </button>
@@ -54,10 +48,14 @@ export const MovieDetails = () => {
           </div>
           <ul>
             <li>
-              <NavLink to="cast">Cast</NavLink>
+              <NavLink state={location.state} to="cast">
+                Cast
+              </NavLink>
             </li>
             <li>
-              <NavLink to="reviews">Reviews</NavLink>
+              <NavLink state={location.state} to="reviews">
+                Reviews
+              </NavLink>
             </li>
           </ul>
           <Outlet></Outlet>
