@@ -1,7 +1,13 @@
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-export const Links = ({id, title, name}) => {
-    return (<li>
-        <NavLink to={`movies/${id}`}>{title?title:name}</NavLink>
-    </li>)
-}
+export const Links = ({ id, title, name }) => {
+  const location = useLocation();
+  return (
+    <li>
+      <NavLink state={{ from: location }} to={`/movies/${id}`}>
+        {title ? title : name}
+      </NavLink>
+    </li>
+  );
+};

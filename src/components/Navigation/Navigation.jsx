@@ -5,7 +5,7 @@ export const Navigation = () => {
      return (<nav>
         <ListUl>
             <li><Link className={({ isActive }) => (isActive ? 'active' : '')} to="/">Home</Link></li>
-            <li><Link className={({ isActive }) => (isActive ? 'active' : '')} to="/Movies">Movies</Link></li>
+            <li><Link className={({ isActive }) => (isActive ? 'active' : '')} to="/movies">Movies</Link></li>
         </ListUl>
     </nav>)
 }

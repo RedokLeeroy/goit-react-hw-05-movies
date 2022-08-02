@@ -1,31 +1,27 @@
-import { useEffect, useState } from "react";
-import {fetchTrendings} from "../Service/Service"
-import {Routes,Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { Layout } from "./Layout/Layout";
-import { mapper } from "./utils/Mapper";
 import { Trend } from "./Trends/Trends";
-import { MovieDetails } from "./MovieDetails/MovieDetails";
+// import { MovieDetails } from "./MovieDetails/MovieDetails";
 import { Cast } from "./Cast/Cast";
 import { Reviews } from "./Reviews/Reviews";
+import { MovieSearch } from "./MovieSearch/MovieSearch";
+import { Suspense, lazy } from "react";
 
+const MovieDetailsLazy = lazy(() => import("./MovieDetails"));
 export const App = () => {
-  const [trendings, setTrendings] = useState([])
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Trend />} />
+          <Route path="/movies" element={<MovieSearch />}></Route>
+          <Route path="/movies/:movieId" element={<MovieDetailsLazy />}>
+            <Route path="cast" element={<Cast />} />
 
-  useEffect(() =>{
-
-    fetchTrendings().then(({data}) => (setTrendings(mapper(data))))
-  },[])
-
-  return (<Routes>
-    <Route path='/' element={<Layout/>}>
-      <Route index element={<Trend data ={trendings} title="Trend films"/>}/>
-      <Route path="/movies">
-      </Route>
-      <Route path="/movies/:movieId" element={<MovieDetails/>}>
-        <Route path="cast" element={<Cast/>}/>
-        
-        <Route path="reviews" element={<Reviews/>}/>
-      </Route>
-      </Route>
-  </Routes>)
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+        </Route>
+      </Routes>
+    </Suspense>
+  );
 };

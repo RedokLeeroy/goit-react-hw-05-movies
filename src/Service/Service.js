@@ -9,13 +9,14 @@ export const fetchTrendings = () => {
   });
 };
 
-// export const fetchSearchMovies = () => {
-//   return axios.get('/search/movie', {
-//     params: {
-//       api_key: API_KEY,
-//     },
-//   });
-// };
+export const fetchSearchMovies = search => {
+  return axios.get('/search/movie', {
+    params: {
+      api_key: API_KEY,
+      query: search,
+    },
+  });
+};
 
 export const fetchDetails = movieId => {
   return axios.get(`/movie/${movieId}`, {
