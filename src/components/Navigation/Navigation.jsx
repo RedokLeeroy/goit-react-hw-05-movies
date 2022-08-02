@@ -6,14 +6,17 @@ export const Navigation = () => {
     <nav>
       <ListUl>
         <li>
-          <Link className={({ isActive }) => (isActive ? "active" : "")} to="/">
+          <Link
+            className={({ isActive }) => (isActive ? "active" : "")}
+            to="/goit-react-hw-05-movies/"
+          >
             Home
           </Link>
         </li>
         <li>
           <Link
             className={({ isActive }) => (isActive ? "active" : "")}
-            to="/movies"
+            to="/goit-react-hw-05-movies/movies"
           >
             Movies
           </Link>

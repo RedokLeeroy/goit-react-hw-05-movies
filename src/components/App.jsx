@@ -12,10 +12,16 @@ export const App = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/goit-react-hw-05-movies/" element={<Layout />}>
           <Route index element={<Trend />} />
-          <Route path="/movies" element={<MovieSearch />}></Route>
-          <Route path="/movies/:movieId" element={<MovieDetailsLazy />}>
+          <Route
+            path="/goit-react-hw-05-movies/movies"
+            element={<MovieSearch />}
+          ></Route>
+          <Route
+            path="/goit-react-hw-05-movies/movies/:movieId"
+            element={<MovieDetailsLazy />}
+          >
             <Route path="cast" element={<Cast />} />
 
             <Route path="reviews" element={<Reviews />} />
