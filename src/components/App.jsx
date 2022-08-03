@@ -1,10 +1,5 @@
+import LoaderSpinner from "./Loader/Loader";
 import { Routes, Route } from "react-router-dom";
-// import { Layout } from "./Pages/Layout/Layout";
-// import { Trend } from "./Pages/Trends/Trends";
-// import { MovieDetails } from "./MovieDetails/MovieDetails";
-// import { Cast } from "./Pages/Cast/Cast";
-// import { Reviews } from "./Pages/Reviews/Reviews";
-// import { MovieSearch } from "./Pages/MovieSearch/MovieSearch";
 import { Suspense, lazy } from "react";
 
 const MovieDetailsLazy = lazy(() => import("./Pages/MovieDetails"));
@@ -16,7 +11,7 @@ const ReviewsLazy = lazy(() => import("./Pages/Reviews"));
 
 export const App = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<LoaderSpinner />}>
       <Routes>
         <Route path="/goit-react-hw-05-movies/" element={<LayoutLazy />}>
           <Route index element={<TrendLazy />} />
