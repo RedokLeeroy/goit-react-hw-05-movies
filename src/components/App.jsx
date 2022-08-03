@@ -1,6 +1,7 @@
 import LoaderSpinner from "./Loader/Loader";
 import { Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
+import { GoHomePage } from "./GoHomePage/GoHomePage";
 
 const MovieDetailsLazy = lazy(() => import("../Pages/MovieDetails"));
 const MovieSearchLazy = lazy(() => import("../Pages/MovieSearch"));
@@ -22,6 +23,7 @@ export const App = () => {
             <Route path="reviews" element={<ReviewsLazy />} />
           </Route>
         </Route>
+        <Route path="*" element={<GoHomePage />} />
       </Routes>
     </Suspense>
   );
