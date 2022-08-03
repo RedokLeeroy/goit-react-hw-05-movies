@@ -13,16 +13,10 @@ export const App = () => {
   return (
     <Suspense fallback={<LoaderSpinner />}>
       <Routes>
-        <Route path="/goit-react-hw-05-movies/" element={<LayoutLazy />}>
+        <Route path="/" element={<LayoutLazy />}>
           <Route index element={<TrendLazy />} />
-          <Route
-            path="/goit-react-hw-05-movies/movies"
-            element={<MovieSearchLazy />}
-          ></Route>
-          <Route
-            path="/goit-react-hw-05-movies/movies/:movieId"
-            element={<MovieDetailsLazy />}
-          >
+          <Route path="/movies" element={<MovieSearchLazy />}></Route>
+          <Route path="/movies/:movieId" element={<MovieDetailsLazy />}>
             <Route path="cast" element={<CastLazy />} />
 
             <Route path="reviews" element={<ReviewsLazy />} />
